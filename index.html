@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamed Kaffa | Computer Science Student & Developer</title>
+    <meta name="description" content="Personal portfolio showcasing Hamed Kaffa's projects and skills as a Computer Science student and developer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Feather Icons (similar to Lucide) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="site-wrapper light-mode">
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="container">
+                <h1 class="logo">Hamed Kaffa</h1>
+                <nav>
+                    <ul class="nav-links">
+                        <li><button class="nav-link" onclick="scrollToSection('about')">About</button></li>
+                        <li><button class="nav-link" onclick="scrollToSection('projects')">Projects</button></li>
+                        <li><button class="nav-link" onclick="scrollToSection('contact')">Contact</button></li>
+                    </ul>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i data-feather="moon" class="icon-moon"></i>
+                        <i data-feather="sun" class="icon-sun"></i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span>Hello, I'm</span>
+                    <span class="gradient-text">Hamed Kaffa</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A Computer Science student passionate about creating beautiful, functional, and user-centered digital experiences.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('projects')">
+                        View My Work
+                        <i data-feather="arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline" onclick="scrollToSection('contact')">
+                        Contact Me
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <button onclick="scrollToSection('about')">
+                <span>Scroll to explore</span>
+                <i data-feather="chevron-down"></i>
+            </button>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title gradient-text">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h3 class="subsection-title">My Journey</h3>
+                        <p class="text-paragraph">
+                            I'm a Computer Science student with a passion for building innovative solutions. My journey in
+                            programming started with a curiosity about how games and applications work, and I've been expanding
+                            my skills ever since.
+                        </p>
+                        <p class="text-paragraph">
+                            I enjoy working with various technologies and am constantly learning new tools and frameworks to
+                            improve my development skills. I'm particularly interested in game development, web applications,
+                            and server technologies.
+                        </p>
+                        <button class="btn btn-primary mt-8">Download CV</button>
+                    </div>
+                    <div class="skills-section">
+                        <h3 class="subsection-title">My Skills</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Java</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress skill-java" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">HTML/CSS</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress skill-html" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress skill-js" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Game Development</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress skill-game" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">React</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress skill-react" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Server Management</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress skill-server" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="tool-item">Git</div>
+                            <div class="tool-item">UI Design</div>
+                            <div class="tool-item">Problem Solving</div>
+                            <div class="tool-item">Networking</div>
+                            <div class="tool-item">Database</div>
+                            <div class="tool-item">API Integration</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Slider -->
+        <section class="section bg-gradient">
+            <div class="container">
+                <h2 class="section-title gradient-text">Featured Projects</h2>
+                <div class="projects-slider">
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <!-- Slides will be generated by JavaScript -->
+                        </div>
+                        <button class="slider-arrow slider-prev" aria-label="Previous project">
+                            <i data-feather="chevron-left"></i>
+                        </button>
+                        <button class="slider-arrow slider-next" aria-label="Next project">
+                            <i data-feather="chevron-right"></i>
+                        </button>
+                        <div class="slider-dots">
+                            <!-- Dots will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid Section -->
+        <section id="projects" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title gradient-text">All Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project cards will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-gradient">
+            <div class="container">
+                <h2 class="section-title gradient-text">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p class="text-paragraph">
+                            I'm always open to discussing new projects, opportunities, or partnerships. Feel free to reach out to me
+                            using any of the methods below.
+                        </p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i data-feather="mail"></i>
+                                </div>
+                                <span>hamed0405n@gmail.com</span>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i data-feather="github"></i>
+                                </div>
+                                <a href="https://github.com/Ssnakyx" target="_blank" rel="noopener noreferrer">github.com/Ssnakyx</a>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i data-feather="linkedin"></i>
+                                </div>
+                                <a href="https://www.linkedin.com/in/hamed-kaffa-98587032a/" target="_blank" rel="noopener noreferrer">linkedin.com/in/hamed-kaffa</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-info">
+                        <h3 class="footer-logo">Hamed Kaffa</h3>
+                        <p class="footer-tagline">Computer Science Student & Developer</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://github.com/Ssnakyx" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/hamed-kaffa-98587032a/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                        <a href="mailto:hamed0405n@gmail.com" class="social-link">
+                            <i data-feather="mail"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © <span id="current-year"></span> Hamed Kaffa. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
