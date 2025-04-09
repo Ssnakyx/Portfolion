@@ -36,7 +36,7 @@ portfolio-html/
 ## How to Use
 
 1. Download or clone this repository
-2. Replace the placeholder images in the `images/projects/` directory with your actual project images
+2. Two project images (forum-project.jpg and poke-hamed.jpg) are already included. Replace the other placeholder images in the `images/projects/` directory with your actual project images
 3. Update the project data in the `script.js` file to match your projects
 4. Customize the content in `index.html` to reflect your personal information
 5. Deploy to Netlify or any other static hosting service
@@ -71,7 +71,7 @@ To update your skills, edit the skill items in the `index.html` file under the s
 
 Finally, let's create a Netlify configuration file to ensure smooth deployment:
 
-```toml file="netlify.toml"
+\`\`\`toml file="netlify.toml"
 # Netlify configuration file
 
 [build]
