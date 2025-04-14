@@ -1,6 +1,5 @@
 # Portfolio Website - HTML Version
 
-This is a static HTML version of the portfolio website, designed to be easily hosted on Netlify or any other static hosting service.
 
 ## Project Structure
 
