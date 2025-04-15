@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" id="html-document">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,19 +27,14 @@
                         <span class="sr-only">Menu</span>
                     </button>
                     <ul class="nav-links" id="nav-links">
-                        <li><button class="nav-link" onclick="scrollToSection('about')" aria-label="Aller à la section À propos" data-lang-key="about">À propos</button></li>
-                        <li><button class="nav-link" onclick="scrollToSection('projects')" aria-label="Aller à la section Projets" data-lang-key="projects">Projets</button></li>
-                        <li><button class="nav-link" onclick="scrollToSection('contact')" aria-label="Aller à la section Contact" data-lang-key="contact">Contact</button></li>
+                        <li><button class="nav-link" onclick="scrollToSection('about')" aria-label="Aller à la section À propos">À propos</button></li>
+                        <li><button class="nav-link" onclick="scrollToSection('projects')" aria-label="Aller à la section Projets">Projets</button></li>
+                        <li><button class="nav-link" onclick="scrollToSection('contact')" aria-label="Aller à la section Contact">Contact</button></li>
                     </ul>
-                    <div class="header-buttons">
-                        <button id="language-toggle" class="language-toggle" aria-label="Changer de langue">
-                            <span class="current-lang">FR</span>
-                        </button>
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème (clair/sombre)">
-                            <i data-feather="moon" class="icon-moon" aria-hidden="true"></i>
-                            <i data-feather="sun" class="icon-sun" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème (clair/sombre)">
+                        <i data-feather="moon" class="icon-moon" aria-hidden="true"></i>
+                        <i data-feather="sun" class="icon-sun" aria-hidden="true"></i>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -51,19 +46,19 @@
             <div class="floating-shape shape-2" aria-hidden="true"></div>
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span data-lang-key="hello">Bonjour, je suis</span>
+                    <span>Bonjour, je suis</span>
                     <span class="gradient-text">Hamed Kaffa</span>
                 </h1>
-                <p class="hero-subtitle" data-lang-key="hero-subtitle">
+                <p class="hero-subtitle">
                     Un étudiant en informatique passionné par la création d'expériences numériques belles, fonctionnelles et centrées sur l'utilisateur.
                 </p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="scrollToSection('projects')" aria-label="Voir mes projets">
-                        <span data-lang-key="view-projects">Voir mes projets</span>
+                        Voir mes projets
                         <i data-feather="arrow-right" aria-hidden="true"></i>
                     </button>
                     <button class="btn btn-outline" onclick="scrollToSection('contact')" aria-label="Me contacter">
-                        <span data-lang-key="contact-me">Me contacter</span>
+                        Me contacter
                     </button>
                 </div>
             </div>
@@ -72,7 +67,7 @@
         <!-- Scroll Indicator -->
         <div class="scroll-indicator">
             <button onclick="scrollToSection('about')" aria-label="Défiler vers la section À propos">
-                <span data-lang-key="scroll-explore">Défiler pour explorer</span>
+                <span>Défiler pour explorer</span>
                 <i data-feather="chevron-down" aria-hidden="true"></i>
             </button>
         </div>
@@ -80,26 +75,24 @@
         <!-- About Section -->
         <section id="about" class="section bg-light" role="region" aria-labelledby="about-title">
             <div class="container">
-                <h2 id="about-title" class="section-title gradient-text" data-lang-key="about-title">À propos de moi</h2>
+                <h2 id="about-title" class="section-title gradient-text">À propos de moi</h2>
                 <div class="about-grid">
                     <div class="about-content">
-                        <h3 class="subsection-title" data-lang-key="journey-title">Mon parcours</h3>
-                        <p class="text-paragraph" data-lang-key="journey-p1">
+                        <h3 class="subsection-title">Mon parcours</h3>
+                        <p class="text-paragraph">
                             Je suis un étudiant en informatique passionné par la création de solutions innovantes. Mon parcours en
                             programmation a commencé par une curiosité sur le fonctionnement des jeux et des applications, et j'ai
                             continué à développer mes compétences depuis.
                         </p>
-                        <p class="text-paragraph" data-lang-key="journey-p2">
+                        <p class="text-paragraph">
                             J'aime travailler avec diverses technologies et j'apprends constamment de nouveaux outils et frameworks pour
                             améliorer mes compétences en développement. Je m'intéresse particulièrement au développement de jeux, aux
                             applications web et aux technologies serveur.
                         </p>
-                        <button class="btn btn-primary mt-8" aria-label="Télécharger mon CV">
-                            <span data-lang-key="download-cv">Télécharger mon CV</span>
-                        </button>
+                        <button class="btn btn-primary mt-8" aria-label="Télécharger mon CV">Télécharger mon CV</button>
                     </div>
                     <div class="skills-section">
-                        <h3 class="subsection-title" data-lang-key="skills-title">Mes compétences</h3>
+                        <h3 class="subsection-title">Mes compétences</h3>
                         <div class="skills-list">
                             <div class="skill-item">
                                 <div class="skill-header">
@@ -130,7 +123,7 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name" data-lang-key="game-dev">Développement de jeux</span>
+                                    <span class="skill-name">Développement de jeux</span>
                                     <span class="skill-percentage" aria-hidden="true">85%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
@@ -148,7 +141,7 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name" data-lang-key="server-management">Gestion de serveurs</span>
+                                    <span class="skill-name">Gestion de serveurs</span>
                                     <span class="skill-percentage" aria-hidden="true">75%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
@@ -159,10 +152,10 @@
                         <div class="tools-grid">
                             <div class="tool-item">Git</div>
                             <div class="tool-item">UI Design</div>
-                            <div class="tool-item" data-lang-key="problem-solving">Résolution de problèmes</div>
-                            <div class="tool-item" data-lang-key="networking">Réseaux</div>
-                            <div class="tool-item" data-lang-key="database">Base de données</div>
-                            <div class="tool-item" data-lang-key="api-integration">Intégration API</div>
+                            <div class="tool-item">Résolution de problèmes</div>
+                            <div class="tool-item">Réseaux</div>
+                            <div class="tool-item">Base de données</div>
+                            <div class="tool-item">Intégration API</div>
                         </div>
                     </div>
                 </div>
@@ -172,7 +165,7 @@
         <!-- Featured Projects Slider -->
         <section class="section bg-gradient" role="region" aria-labelledby="featured-projects-title">
             <div class="container">
-                <h2 id="featured-projects-title" class="section-title gradient-text" data-lang-key="featured-projects">Projets en vedette</h2>
+                <h2 id="featured-projects-title" class="section-title gradient-text">Projets en vedette</h2>
                 <div class="projects-slider">
                     <div class="slider-container" role="region" aria-roledescription="carrousel" aria-label="Projets en vedette">
                         <div class="slider-track">
@@ -195,7 +188,7 @@
         <!-- Projects Grid Section -->
         <section id="projects" class="section bg-light" role="region" aria-labelledby="all-projects-title">
             <div class="container">
-                <h2 id="all-projects-title" class="section-title gradient-text" data-lang-key="all-projects">Tous les projets</h2>
+                <h2 id="all-projects-title" class="section-title gradient-text">Tous les projets</h2>
                 <div class="projects-grid">
                     <!-- Project cards will be generated by JavaScript -->
                 </div>
@@ -205,10 +198,10 @@
         <!-- Contact Section -->
         <section id="contact" class="section bg-gradient" role="region" aria-labelledby="contact-title">
             <div class="container">
-                <h2 id="contact-title" class="section-title gradient-text" data-lang-key="contact-title">Contactez-moi</h2>
+                <h2 id="contact-title" class="section-title gradient-text">Contactez-moi</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <p class="text-paragraph" data-lang-key="contact-text">
+                        <p class="text-paragraph">
                             Je suis toujours ouvert à discuter de nouveaux projets, opportunités ou partenariats. N'hésitez pas à me
                             contacter par l'un des moyens ci-dessous.
                         </p>
@@ -242,14 +235,12 @@
                             <input type="text" name="_honey" style="display:none">
                             
                             <div class="form-group">
-                                <label for="name" id="name-label" data-lang-key="name-label">Nom</label>
+                                <label for="name" id="name-label">Nom</label>
                                 <input 
                                     type="text" 
                                     id="name" 
                                     name="name" 
                                     placeholder="Votre nom" 
-                                    data-lang-key="name-placeholder" 
-                                    data-lang-key-attr="placeholder"
                                     required 
                                     aria-required="true"
                                     aria-labelledby="name-label"
@@ -258,14 +249,12 @@
                                 <div id="name-error" class="error-message sr-only" role="alert"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email" id="email-label" data-lang-key="email-label">Email</label>
+                                <label for="email" id="email-label">Email</label>
                                 <input 
                                     type="email" 
                                     id="email" 
                                     name="email" 
                                     placeholder="Votre email" 
-                                    data-lang-key="email-placeholder" 
-                                    data-lang-key-attr="placeholder"
                                     required 
                                     aria-required="true"
                                     aria-labelledby="email-label"
@@ -274,14 +263,12 @@
                                 <div id="email-error" class="error-message sr-only" role="alert"></div>
                             </div>
                             <div class="form-group">
-                                <label for="message" id="message-label" data-lang-key="message-label">Message</label>
+                                <label for="message" id="message-label">Message</label>
                                 <textarea 
                                     id="message" 
                                     name="message" 
                                     rows="4" 
                                     placeholder="Votre message" 
-                                    data-lang-key="message-placeholder" 
-                                    data-lang-key-attr="placeholder"
                                     required 
                                     aria-required="true"
                                     aria-labelledby="message-label"
@@ -294,7 +281,7 @@
                                 class="btn btn-primary btn-full"
                                 aria-label="Envoyer le message"
                             >
-                                <span data-lang-key="send-message">Envoyer le message</span>
+                                Envoyer le message
                             </button>
                         </form>
                     </div>
@@ -308,7 +295,7 @@
                 <div class="footer-content">
                     <div class="footer-info">
                         <h3 class="footer-logo">Hamed Kaffa</h3>
-                        <p class="footer-tagline" data-lang-key="footer-tagline">Étudiant en Informatique & Développeur</p>
+                        <p class="footer-tagline">Étudiant en Informatique & Développeur</p>
                     </div>
                     <div class="footer-social">
                         <a href="https://github.com/Ssnakyx" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
@@ -323,7 +310,7 @@
                     </div>
                 </div>
                 <div class="footer-copyright">
-                    © <span id="current-year"></span> Hamed Kaffa. <span data-lang-key="rights-reserved">Tous droits réservés.</span>
+                    © <span id="current-year"></span> Hamed Kaffa. Tous droits réservés.
                 </div>
             </div>
         </footer>
