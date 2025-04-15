@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Theme Toggle
   const themeToggle = document.getElementById("theme-toggle")
   const siteWrapper = document.querySelector(".site-wrapper")
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle")
+  const navLinks = document.getElementById("nav-links")
 
   // Check for saved theme preference or use device preference
   const savedTheme = localStorage.getItem("theme")
@@ -29,6 +31,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
+  // Mobile menu toggle
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener("click", () => {
+      const isExpanded = mobileMenuToggle.getAttribute("aria-expanded") === "true"
+      mobileMenuToggle.setAttribute("aria-expanded", !isExpanded)
+      navLinks.classList.toggle("nav-open")
+      mobileMenuToggle.classList.toggle("menu-open")
+      document.body.classList.toggle("menu-active")
+    })
+
+    // Close mobile menu when clicking on a link
+    const navLinkButtons = document.querySelectorAll(".nav-link")
+    navLinkButtons.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("nav-open")
+        mobileMenuToggle.classList.remove("menu-open")
+        mobileMenuToggle.setAttribute("aria-expanded", "false")
+        document.body.classList.remove("menu-active")
+      })
+    })
+  }
+
   // Smooth scrolling for navigation
   window.scrollToSection = (id) => {
     const element = document.getElementById(id)
@@ -47,76 +71,76 @@ document.addEventListener("DOMContentLoaded", () => {
   // Project data
   const projectsData = [
     {
-      title: "Forum Project",
+      title: "Projet Forum",
       description:
-        "A collaborative forum for mountain enthusiasts with features like photo sharing, interactive maps, and user reviews.",
+        "Un forum collaboratif pour les passionnés de montagne avec des fonctionnalités comme le partage de photos, des cartes interactives et des avis d'utilisateurs.",
       icon: "message-square",
       color: "blue",
       githubUrl: "https://github.com/B1-Info-23-24/projet-forum-erwan-lucas-hamed-tom",
-      technologies: ["HTML", "CSS", "Go", "Web Development", "Collaboration"],
+      technologies: ["HTML", "CSS", "Go", "Développement Web", "Collaboration"],
     },
     {
       title: "Hackathon B2",
       description:
-        "A project developed during a hackathon event, showcasing rapid development and innovative problem-solving skills.",
+        "Un projet développé lors d'un événement hackathon, démontrant un développement rapide et des compétences innovantes de résolution de problèmes.",
       icon: "code",
       color: "purple",
       githubUrl: "https://github.com/Tokennn/Hackaton-B2",
-      technologies: ["Rapid Development", "Problem Solving", "Team Collaboration", "Innovation"],
+      technologies: ["Développement Rapide", "Résolution de Problèmes", "Collaboration d'Équipe", "Innovation"],
     },
     {
       title: "HangMan 2023",
       description:
-        "A modern implementation of the classic Hangman word guessing game with enhanced graphics and gameplay features.",
+        "Une implémentation moderne du jeu classique du Pendu avec des graphismes améliorés et des fonctionnalités de gameplay.",
       icon: "terminal",
       color: "green",
       githubUrl: "https://github.com/Ssnakyx/HangMan-2023",
-      technologies: ["Java", "JavaFX", "Game Development", "UI Design"],
+      technologies: ["Java", "JavaFX", "Développement de Jeux", "Design UI"],
     },
     {
       title: "HangMan Web",
       description:
-        "A web-based version of the Hangman game with a responsive user interface, allowing players to guess words through a browser.",
+        "Une version web du jeu du Pendu avec une interface utilisateur responsive, permettant aux joueurs de deviner des mots via un navigateur.",
       icon: "globe",
       color: "orange",
       githubUrl: "https://github.com/Ssnakyx/HangMan_Web",
-      technologies: ["HTML", "CSS", "JavaScript", "Web Development"],
+      technologies: ["HTML", "CSS", "JavaScript", "Développement Web"],
     },
     {
-      title: "Minecraft Server",
+      title: "Serveur Minecraft",
       description:
-        "A custom Minecraft server implementation with configuration tools and plugins for enhanced gameplay experiences.",
+        "Une implémentation personnalisée de serveur Minecraft avec des outils de configuration et des plugins pour des expériences de jeu améliorées.",
       icon: "server",
       color: "red",
       githubUrl: "https://github.com/Ssnakyx/MinecraftServer",
-      technologies: ["Java", "Server Management", "Game Modding", "Networking"],
+      technologies: ["Java", "Gestion de Serveur", "Modding de Jeux", "Réseaux"],
     },
     {
-      title: "BreakOut Game",
+      title: "Jeu BreakOut",
       description:
-        "A recreation of the classic Breakout arcade game with modern graphics and additional gameplay features.",
+        "Une recréation du jeu d'arcade classique Breakout avec des graphismes modernes et des fonctionnalités de gameplay supplémentaires.",
       icon: "box",
       color: "yellow",
       githubUrl: "https://github.com/Ssnakyx/BreakOut_Game",
-      technologies: ["Java", "Game Development", "Graphics", "Game Design"],
+      technologies: ["Java", "Développement de Jeux", "Graphismes", "Game Design"],
     },
     {
       title: "PokeHamed",
       description:
-        "A Pokémon-themed application featuring a custom Pokédex, battle simulator, and collection management system.",
+        "Une application sur le thème de Pokémon avec un Pokédex personnalisé, un simulateur de combat et un système de gestion de collection.",
       icon: "zap",
       color: "pink",
       githubUrl: "https://github.com/Ssnakyx/PokeHamed",
-      technologies: ["Java", "API Integration", "Database", "Game Development"],
+      technologies: ["Java", "Intégration API", "Base de données", "Développement de Jeux"],
     },
     {
-      title: "Portfolio Website",
+      title: "Site Portfolio",
       description:
-        "This portfolio website built with HTML, CSS, and JavaScript for a responsive and interactive experience.",
+        "Ce site portfolio construit avec HTML, CSS et JavaScript pour une expérience interactive et responsive.",
       icon: "layout",
       color: "teal",
       githubUrl: "https://github.com/Ssnakyx",
-      technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      technologies: ["HTML", "CSS", "JavaScript", "Design Responsive"],
     },
   ]
 
@@ -135,38 +159,47 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create slide
     const slide = document.createElement("div")
     slide.className = "slider-slide"
+    slide.setAttribute("role", "tabpanel")
+    slide.setAttribute("id", `slide-${index}`)
+    slide.setAttribute("aria-labelledby", `slide-tab-${index}`)
+    slide.setAttribute("aria-hidden", index === 0 ? "false" : "true")
+    slide.setAttribute("tabindex", index === 0 ? "0" : "-1")
     slide.style.setProperty("--project-color", getColorValue(project.color))
 
     // Create slide content
     slide.innerHTML = `
-      <div class="slide-content">
-        <div class="slide-icon-container">
-          <i data-feather="${project.icon}"></i>
-        </div>
-        <h3 class="slide-title">${project.title}</h3>
-        <p class="slide-description">${project.description}</p>
-        <div class="slide-tags">
-          ${project.technologies.map((tech) => `<span class="slide-tag">${tech}</span>`).join("")}
-        </div>
-        <div class="slide-buttons">
-          <button class="btn btn-primary" onclick="window.open('${project.githubUrl}', '_blank')">
-            <i data-feather="github"></i>
-            View Code
-          </button>
-          <button class="btn btn-outline" onclick="window.open('${project.githubUrl}', '_blank')">
-            <i data-feather="external-link"></i>
-            Live Demo
-          </button>
-        </div>
+    <div class="slide-content">
+      <div class="slide-icon-container" aria-hidden="true">
+        <i data-feather="${project.icon}"></i>
       </div>
-    `
+      <h3 class="slide-title" id="slide-heading-${index}">${project.title}</h3>
+      <p class="slide-description">${project.description}</p>
+      <div class="slide-tags" aria-label="Technologies utilisées">
+        ${project.technologies.map((tech) => `<span class="slide-tag">${tech}</span>`).join("")}
+      </div>
+      <div class="slide-buttons">
+        <button class="btn btn-primary" onclick="window.open('${project.githubUrl}', '_blank')" aria-label="Voir le code de ${project.title}">
+          <i data-feather="github" aria-hidden="true"></i>
+          Voir le code
+        </button>
+        <button class="btn btn-outline" onclick="window.open('${project.githubUrl}', '_blank')" aria-label="Démo en direct de ${project.title}">
+          <i data-feather="external-link" aria-hidden="true"></i>
+          Démo en direct
+        </button>
+      </div>
+    </div>
+  `
 
     sliderTrack.appendChild(slide)
 
     // Create dot
     const dot = document.createElement("button")
     dot.className = "slider-dot"
-    dot.setAttribute("aria-label", `Go to slide ${index + 1}`)
+    dot.setAttribute("role", "tab")
+    dot.setAttribute("id", `slide-tab-${index}`)
+    dot.setAttribute("aria-controls", `slide-${index}`)
+    dot.setAttribute("aria-label", `Aller au projet ${index + 1}: ${project.title}`)
+    dot.setAttribute("aria-selected", index === 0 ? "true" : "false")
     dot.addEventListener("click", () => goToSlide(index))
     sliderDots.appendChild(dot)
   })
@@ -184,10 +217,34 @@ document.addEventListener("DOMContentLoaded", () => {
     currentSlide = index
     sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`
 
-    // Update active dot
+    // Update active dot and ARIA attributes
     document.querySelectorAll(".slider-dot").forEach((dot, i) => {
       dot.classList.toggle("active", i === currentSlide)
+      dot.setAttribute("aria-selected", i === currentSlide ? "true" : "false")
+
+      // Mettre à jour l'accessibilité des slides
+      const slide = document.getElementById(`slide-${i}`)
+      if (slide) {
+        slide.setAttribute("aria-hidden", i === currentSlide ? "false" : "true")
+        if (i === currentSlide) {
+          slide.setAttribute("tabindex", "0")
+        } else {
+          slide.setAttribute("tabindex", "-1")
+        }
+      }
     })
+
+    // Announce slide change for screen readers with more details
+    const currentProject = featuredProjects[currentSlide]
+    const liveRegion = document.createElement("div")
+    liveRegion.setAttribute("aria-live", "assertive")
+    liveRegion.classList.add("sr-only")
+    liveRegion.textContent = `Projet ${currentSlide + 1} sur ${featuredProjects.length}: ${currentProject.title}. ${currentProject.description}`
+    document.body.appendChild(liveRegion)
+
+    setTimeout(() => {
+      document.body.removeChild(liveRegion)
+    }, 3000)
   }
 
   prevButton.addEventListener("click", () => {
@@ -231,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
     projectCard.style.setProperty("--project-color", getColorValue(project.color))
 
     projectCard.innerHTML = `
-      <div class="project-icon-container">
+      <div class="project-icon-container" aria-hidden="true">
         <i data-feather="${project.icon}"></i>
       </div>
       <div class="project-content">
@@ -239,9 +296,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="project-description">${project.description}</p>
       </div>
       <div class="project-footer">
-        <button class="project-link" onclick="window.open('${project.githubUrl}', '_blank')">
-          <i data-feather="github"></i>
-          View on GitHub
+        <button class="project-link" onclick="window.open('${project.githubUrl}', '_blank')" aria-label="Voir ${project.title} sur GitHub">
+          <i data-feather="github" aria-hidden="true"></i>
+          Voir sur GitHub
         </button>
       </div>
     `
@@ -257,14 +314,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Helper function to get color values
   function getColorValue(color) {
     const colors = {
-      blue: "#3b82f6",
-      purple: "#8b5cf6",
-      green: "#22c55e",
-      orange: "#f97316",
-      red: "#ef4444",
-      yellow: "#eab308",
-      pink: "#ec4899",
-      teal: "#14b8a6",
+      blue: "#2563eb",
+      purple: "#7c3aed",
+      green: "#16a34a",
+      orange: "#ea580c",
+      red: "#dc2626",
+      yellow: "#ca8a04",
+      pink: "#db2777",
+      teal: "#0d9488",
     }
     return colors[color] || colors.blue
   }
@@ -273,13 +330,113 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form")
 
   contactForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-
-    // In a real implementation, you would send the form data to a server
-    // For now, we'll just show an alert
-    alert("Thank you for your message! This is a demo form, so no message was actually sent.")
-    contactForm.reset()
+    // FormSubmit.co will handle the form submission
+    // No need to prevent default or show an alert
   })
+
+  // Contact form validation for accessibility
+  if (contactForm) {
+    const nameInput = document.getElementById("name")
+    const emailInput = document.getElementById("email")
+    const messageInput = document.getElementById("message")
+    const nameError = document.getElementById("name-error")
+    const emailError = document.getElementById("email-error")
+    const messageError = document.getElementById("message-error")
+
+    // Validation functions
+    function validateName() {
+      if (nameInput.validity.valueMissing) {
+        nameError.textContent = "Veuillez entrer votre nom"
+        nameError.classList.remove("sr-only")
+        nameInput.setAttribute("aria-invalid", "true")
+        return false
+      } else {
+        nameError.textContent = ""
+        nameError.classList.add("sr-only")
+        nameInput.setAttribute("aria-invalid", "false")
+        return true
+      }
+    }
+
+    function validateEmail() {
+      if (emailInput.validity.valueMissing) {
+        emailError.textContent = "Veuillez entrer votre email"
+        emailError.classList.remove("sr-only")
+        emailInput.setAttribute("aria-invalid", "true")
+        return false
+      } else if (emailInput.validity.typeMismatch) {
+        emailError.textContent = "Veuillez entrer un email valide"
+        emailError.classList.remove("sr-only")
+        emailInput.setAttribute("aria-invalid", "true")
+        return false
+      } else {
+        emailError.textContent = ""
+        emailError.classList.add("sr-only")
+        emailInput.setAttribute("aria-invalid", "false")
+        return true
+      }
+    }
+
+    function validateMessage() {
+      if (messageInput.validity.valueMissing) {
+        messageError.textContent = "Veuillez entrer votre message"
+        messageError.classList.remove("sr-only")
+        messageInput.setAttribute("aria-invalid", "true")
+        return false
+      } else {
+        messageError.textContent = ""
+        messageError.classList.add("sr-only")
+        messageInput.setAttribute("aria-invalid", "false")
+        return true
+      }
+    }
+
+    // Add event listeners for real-time validation
+    nameInput.addEventListener("input", validateName)
+    emailInput.addEventListener("input", validateEmail)
+    messageInput.addEventListener("input", validateMessage)
+
+    // Form submission validation
+    contactForm.addEventListener("submit", (e) => {
+      let isValid = true
+
+      // Validate all fields
+      if (!validateName()) isValid = false
+      if (!validateEmail()) isValid = false
+      if (!validateMessage()) isValid = false
+
+      if (!isValid) {
+        e.preventDefault()
+
+        // Announce error for screen readers
+        const errorAnnouncement = document.createElement("div")
+        errorAnnouncement.setAttribute("aria-live", "assertive")
+        errorAnnouncement.className = "sr-only"
+        errorAnnouncement.textContent = "Le formulaire contient des erreurs. Veuillez les corriger avant de soumettre."
+        document.body.appendChild(errorAnnouncement)
+
+        setTimeout(() => {
+          document.body.removeChild(errorAnnouncement)
+        }, 3000)
+
+        // Focus on the first invalid field
+        if (nameInput.getAttribute("aria-invalid") === "true") {
+          nameInput.focus()
+        } else if (emailInput.getAttribute("aria-invalid") === "true") {
+          emailInput.focus()
+        } else if (messageInput.getAttribute("aria-invalid") === "true") {
+          messageInput.focus()
+        }
+      } else {
+        // Announce success for screen readers
+        const successAnnouncement = document.createElement("div")
+        successAnnouncement.setAttribute("aria-live", "assertive")
+        successAnnouncement.className = "sr-only"
+        successAnnouncement.textContent = "Formulaire soumis avec succès. Vous allez être redirigé."
+        document.body.appendChild(successAnnouncement)
+      }
+    })
+  }
 
   // Animate skill bars on scroll
   const skillBars = document.querySelectorAll(".skill-progress")
@@ -382,33 +539,56 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Mobile menu toggle
-  const mobileMenuToggle = document.getElementById("mobile-menu-toggle")
-  const navLinks = document.querySelector(".nav-links")
+  // Keyboard navigation for slider
+  sliderContainer.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      currentSlide = (currentSlide - 1 + featuredProjects.length) % featuredProjects.length
+      goToSlide(currentSlide)
+    } else if (e.key === "ArrowRight") {
+      currentSlide = (currentSlide + 1) % featuredProjects.length
+      goToSlide(currentSlide)
+    }
+  })
 
-  if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("nav-open")
-      mobileMenuToggle.classList.toggle("menu-open")
-      document.body.classList.toggle("menu-active")
-    })
-
-    // Close mobile menu when clicking on a link
-    const navLinkButtons = document.querySelectorAll(".nav-link")
-    navLinkButtons.forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("nav-open")
-        mobileMenuToggle.classList.remove("menu-open")
-        document.body.classList.remove("menu-active")
-      })
-    })
-  }
+  setupScreenReaderAccessibility()
 })
-// Import Feather Icons (if not already included in your HTML)
-// This assumes you are using a CDN or have feather-icons installed via npm
-// If using npm, you'll need to adjust the import statement accordingly
-// For CDN: <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-// If using npm: import feather from 'feather-icons';
 
 // Declare feather variable to avoid undefined errors (if not already declared)
 const feather = window.feather
+
+// Amélioration de l'accessibilité pour les lecteurs d'écran
+function setupScreenReaderAccessibility() {
+  // Ajouter des descriptions pour les icônes
+  document.querySelectorAll("[data-feather]").forEach((icon) => {
+    if (!icon.getAttribute("aria-hidden")) {
+      icon.setAttribute("aria-hidden", "true")
+    }
+  })
+
+  // Améliorer l'accessibilité du slider
+  const sliderContainer = document.querySelector(".slider-container")
+  if (sliderContainer) {
+    sliderContainer.setAttribute("tabindex", "0")
+    sliderContainer.setAttribute("aria-roledescription", "carrousel")
+    sliderContainer.setAttribute("aria-label", "Projets en vedette")
+  }
+
+  // Améliorer l'accessibilité des cartes de projet
+  document.querySelectorAll(".project-card").forEach((card, index) => {
+    card.setAttribute("tabindex", "0")
+    card.setAttribute("aria-label", `Projet: ${projectsData[index].title}`)
+  })
+
+  // Ajouter des instructions pour les utilisateurs de lecteurs d'écran
+  const srInstructions = document.createElement("div")
+  srInstructions.className = "sr-only"
+  srInstructions.setAttribute("aria-live", "polite")
+  srInstructions.textContent =
+    "Utilisez les flèches gauche et droite pour naviguer dans le carrousel de projets. Appuyez sur Tab pour naviguer entre les éléments interactifs."
+  document.body.appendChild(srInstructions)
+
+  // Supprimer les instructions après 5 secondes
+  setTimeout(() => {
+    document.body.removeChild(srInstructions)
+  }, 5000)
+}

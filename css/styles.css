@@ -5,19 +5,19 @@
   --color-bg-secondary: #ffffff;
   --color-text-primary: #333333;
   --color-text-secondary: #666666;
-  --color-accent-1: #3b82f6; /* blue-500 */
-  --color-accent-2: #8b5cf6; /* purple-500 */
+  --color-accent-1: #2563eb; /* blue-600 - meilleur contraste */
+  --color-accent-2: #7c3aed; /* purple-600 - meilleur contraste */
   --color-card-bg: #ffffff;
   --color-card-shadow: rgba(0, 0, 0, 0.1);
   --color-input-bg: #ffffff;
-  --color-input-border: #e5e7eb;
-  --color-header-bg: rgba(255, 255, 255, 0.7);
+  --color-input-border: #d1d5db;
+  --color-header-bg: rgba(255, 255, 255, 0.9);
   --color-footer-bg: #1d1d1f;
   --color-footer-text: #ffffff;
   --color-footer-secondary: #a1a1a6;
 
   /* Project Colors */
-  --project-color: #3b82f6;
+  --project-color: #2563eb;
 }
 
 .dark-mode {
@@ -25,12 +25,12 @@
   --color-bg-primary: #121212;
   --color-bg-secondary: #1a1a1a;
   --color-text-primary: #f5f5f7;
-  --color-text-secondary: #a1a1a6;
+  --color-text-secondary: #d1d5db;
   --color-card-bg: #252525;
   --color-card-shadow: rgba(0, 0, 0, 0.3);
   --color-input-bg: #333333;
-  --color-input-border: #444444;
-  --color-header-bg: rgba(0, 0, 0, 0.7);
+  --color-input-border: #4b5563;
+  --color-header-bg: rgba(0, 0, 0, 0.9);
 }
 
 * {
@@ -64,6 +64,66 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+/* Accessibilité */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 2px;
+}
+
+/* Styles pour les messages d'erreur */
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.error-message:not(.sr-only) {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px #dc2626;
+}
+
+/* Skip link pour l'accessibilité */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent-1);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 /* Typography */
@@ -159,14 +219,14 @@ h6 {
 }
 
 .btn-outline {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -590,27 +650,27 @@ nav {
 }
 
 .skill-java {
-  background: linear-gradient(to right, #ef4444, #f87171);
+  background: linear-gradient(to right, #dc2626, #ef4444);
 }
 
 .skill-html {
-  background: linear-gradient(to right, #f97316, #fb923c);
+  background: linear-gradient(to right, #ea580c, #f97316);
 }
 
 .skill-js {
-  background: linear-gradient(to right, #eab308, #facc15);
+  background: linear-gradient(to right, #ca8a04, #eab308);
 }
 
 .skill-game {
-  background: linear-gradient(to right, #22c55e, #4ade80);
+  background: linear-gradient(to right, #16a34a, #22c55e);
 }
 
 .skill-react {
-  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  background: linear-gradient(to right, #2563eb, #3b82f6);
 }
 
 .skill-server {
-  background: linear-gradient(to right, #8b5cf6, #a78bfa);
+  background: linear-gradient(to right, #7c3aed, #8b5cf6);
 }
 
 .tools-grid {
