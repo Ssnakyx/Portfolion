@@ -315,6 +315,42 @@ nav {
   left: 10%;
 }
 
+/* Ajout des styles pour le bouton de langue */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.language-toggle {
+  background: var(--color-bg-secondary);
+  border: none;
+  border-radius: 9999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background-color 0.3s, transform 0.3s;
+  z-index: 20;
+}
+
+.language-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
+}
+
+.dark-mode .language-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.current-lang {
+  color: var(--color-text-primary);
+}
+
 .theme-toggle {
   background: var(--color-bg-secondary);
   border: none;
