@@ -847,4 +847,73 @@ function setupScreenReaderAccessibility() {
   setTimeout(() => {
     document.body.removeChild(srInstructions)
   }, 5000)
+
+  // Ajouter des descriptions plus détaillées pour les projets
+  document.querySelectorAll(".project-card").forEach((card, index) => {
+    const projectTitle = card.querySelector(".project-title").textContent
+    const projectDescription = card.querySelector(".project-description").textContent
+    const technologies = projectsData[index].technologies.join(", ")
+
+    // Créer une description complète pour les lecteurs d'écran
+    const fullDescription = `Projet: ${projectTitle}. Description: ${projectDescription}. Technologies utilisées: ${technologies}.`
+    card.setAttribute("aria-label", fullDescription)
+  })
+
+  // Améliorer l'accessibilité du slider
+  const sliderContainer2 = document.querySelector(".slider-container")
+  if (sliderContainer2) {
+    // Ajouter des instructions pour la navigation au clavier
+    sliderContainer2.setAttribute(
+      "aria-description",
+      "Utilisez les flèches gauche et droite pour naviguer entre les projets",
+    )
+
+    // S'assurer que le focus est visible
+    document.querySelectorAll(".slider-dot, .slider-arrow, .btn").forEach((element) => {
+      element.addEventListener("focus", () => {
+        element.classList.add("focus-visible")
+      })
+      element.addEventListener("blur", () => {
+        element.classList.remove("focus-visible")
+      })
+    })
+  }
+
+  // Améliorer l'accessibilité du modal
+  const modal = document.getElementById("project-modal")
+  if (modal) {
+    // Piéger le focus dans le modal quand il est ouvert
+    modal.addEventListener("keydown", (e) => {
+      if (e.key === "Tab") {
+        const focusableElements = modal.querySelectorAll(
+          "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])",
+        )
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements[focusableElements.length - 1]
+
+        // Si Shift+Tab est pressé et que le focus est sur le premier élément, aller au dernier
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault()
+          lastElement.focus()
+        }
+        // Si Tab est pressé et que le focus est sur le dernier élément, aller au premier
+        else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault()
+          firstElement.focus()
+        }
+      }
+    })
+  }
+
+  // Ajouter des instructions d'accessibilité au chargement de la page
+  const accessibilityInstructions = document.createElement("div")
+  accessibilityInstructions.className = "sr-only"
+  accessibilityInstructions.setAttribute("aria-live", "polite")
+  accessibilityInstructions.textContent =
+    "Bienvenue sur le portfolio de Hamed Kaffa. Ce site est accessible au clavier. Utilisez la touche Tab pour naviguer entre les éléments et Entrée pour activer les boutons et liens."
+  document.body.appendChild(accessibilityInstructions)
+
+  setTimeout(() => {
+    document.body.removeChild(accessibilityInstructions)
+  }, 5000)
 }

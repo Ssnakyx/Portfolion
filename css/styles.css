@@ -25,8 +25,8 @@
   /* Dark Theme Colors */
   --color-bg-primary: #121212;
   --color-bg-secondary: #1a1a1a;
-  --color-text-primary: #f5f5f7;
-  --color-text-secondary: #d1d5db;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #e2e8f0;
   --color-card-bg: #252525;
   --color-card-shadow: rgba(0, 0, 0, 0.3);
   --color-input-bg: #333333;
@@ -91,8 +91,31 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent-1);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-accent-1);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  border-radius: 0.25rem;
+  transition: outline-color 0.2s ease-in-out;
+}
+
+.btn:focus-visible,
+.project-card:focus-visible,
+.slider-dot:focus-visible,
+.slider-arrow:focus-visible,
+.nav-link:focus-visible,
+.social-link:focus-visible,
+.project-link:focus-visible,
+.project-details-btn:focus-visible {
+  outline: 3px solid var(--color-accent-1);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Classe pour les éléments avec focus visible */
+.focus-visible {
+  outline: 3px solid var(--color-accent-1) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
 }
 
 /* Styles pour les messages d'erreur */
@@ -103,7 +126,12 @@ body {
 }
 
 .error-message:not(.sr-only) {
-  animation: fadeIn 0.3s ease-in-out;
+  color: #dc2626;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-left: 3px solid #dc2626;
+  background-color: rgba(220, 38, 38, 0.1);
 }
 
 input[aria-invalid="true"],
@@ -1273,7 +1301,7 @@ nav {
 
 .form-group label {
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.25rem;
   color: var(--color-text-primary);
 }
@@ -1553,4 +1581,29 @@ nav {
   .contact-form-container {
     padding: 1.5rem;
   }
+}
+
+/* Amélioration de la visibilité des liens */
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Amélioration de l'accessibilité du formulaire */
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--color-accent-1);
+  outline-offset: 0;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
