@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" id="html-document">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,10 +31,16 @@
                         <li><button class="nav-link" onclick="scrollToSection('projects')" aria-label="Aller à la section Projets">Projets</button></li>
                         <li><button class="nav-link" onclick="scrollToSection('contact')" aria-label="Aller à la section Contact">Contact</button></li>
                     </ul>
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème (clair/sombre)">
-                        <i data-feather="moon" class="icon-moon" aria-hidden="true"></i>
-                        <i data-feather="sun" class="icon-sun" aria-hidden="true"></i>
-                    </button>
+                    <div class="header-buttons">
+                        <!-- Bouton de langue masqué par le JavaScript -->
+                        <button id="language-toggle" class="language-toggle" aria-label="Changer de langue" style="display: none;">
+                            <span class="current-lang">FR</span>
+                        </button>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème (clair/sombre)">
+                            <i data-feather="moon" class="icon-moon" aria-hidden="true"></i>
+                            <i data-feather="sun" class="icon-sun" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </nav>
             </div>
         </header>
@@ -54,23 +60,15 @@
                 </p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="scrollToSection('projects')" aria-label="Voir mes projets">
-                        Voir mes projets
+                        <span>Voir mes projets</span>
                         <i data-feather="arrow-right" aria-hidden="true"></i>
                     </button>
                     <button class="btn btn-outline" onclick="scrollToSection('contact')" aria-label="Me contacter">
-                        Me contacter
+                        <span>Me contacter</span>
                     </button>
                 </div>
             </div>
         </section>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <button onclick="scrollToSection('about')" aria-label="Défiler vers la section À propos">
-                <span>Défiler pour explorer</span>
-                <i data-feather="chevron-down" aria-hidden="true"></i>
-            </button>
-        </div>
 
         <!-- About Section -->
         <section id="about" class="section bg-light" role="region" aria-labelledby="about-title">
@@ -89,7 +87,9 @@
                             améliorer mes compétences en développement. Je m'intéresse particulièrement au développement de jeux, aux
                             applications web et aux technologies serveur.
                         </p>
-                        <button class="btn btn-primary mt-8" aria-label="Télécharger mon CV">Télécharger mon CV</button>
+                        <button class="btn btn-primary mt-8" aria-label="Télécharger mon CV">
+                            <span>Télécharger mon CV</span>
+                        </button>
                     </div>
                     <div class="skills-section">
                         <h3 class="subsection-title">Mes compétences</h3>
@@ -100,7 +100,7 @@
                                     <span class="skill-percentage" aria-hidden="true">90%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="skill-progress skill-java" style="width: 90%"></div>
+                                    <div class="skill-progress skill-java" style="width: 90%" data-width="90%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -109,7 +109,7 @@
                                     <span class="skill-percentage" aria-hidden="true">85%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="skill-progress skill-html" style="width: 85%"></div>
+                                    <div class="skill-progress skill-html" style="width: 85%" data-width="85%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -118,7 +118,7 @@
                                     <span class="skill-percentage" aria-hidden="true">80%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="skill-progress skill-js" style="width: 80%"></div>
+                                    <div class="skill-progress skill-js" style="width: 80%" data-width="80%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -127,7 +127,7 @@
                                     <span class="skill-percentage" aria-hidden="true">85%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="skill-progress skill-game" style="width: 85%"></div>
+                                    <div class="skill-progress skill-game" style="width: 85%" data-width="85%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -136,7 +136,7 @@
                                     <span class="skill-percentage" aria-hidden="true">70%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="skill-progress skill-react" style="width: 70%"></div>
+                                    <div class="skill-progress skill-react" style="width: 70%" data-width="70%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -145,7 +145,7 @@
                                     <span class="skill-percentage" aria-hidden="true">75%</span>
                                 </div>
                                 <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="skill-progress skill-server" style="width: 75%"></div>
+                                    <div class="skill-progress skill-server" style="width: 75%" data-width="75%"></div>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +281,7 @@
                                 class="btn btn-primary btn-full"
                                 aria-label="Envoyer le message"
                             >
-                                Envoyer le message
+                                <span>Envoyer le message</span>
                             </button>
                         </form>
                     </div>
@@ -310,10 +310,37 @@
                     </div>
                 </div>
                 <div class="footer-copyright">
-                    © <span id="current-year"></span> Hamed Kaffa. Tous droits réservés.
+                    © <span id="current-year"></span> Hamed Kaffa. <span>Tous droits réservés.</span>
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="project-modal-overlay" class="project-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <div id="project-modal" class="project-modal">
+            <div class="project-modal-header">
+                <h3 id="project-modal-title" class="project-modal-title"></h3>
+                <button id="project-modal-close" class="project-modal-close" aria-label="Fermer">
+                    <i data-feather="x" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="project-modal-body">
+                <p id="project-modal-description" class="project-modal-description"></p>
+                <div id="project-modal-details" class="project-modal-details"></div>
+                <div id="project-modal-tags" class="project-modal-tags"></div>
+            </div>
+            <div class="project-modal-footer">
+                <button id="project-modal-repo" class="btn btn-primary" aria-label="Voir le dépôt GitHub">
+                    <i data-feather="github" aria-hidden="true"></i>
+                    <span>Voir le dépôt</span>
+                </button>
+                <button id="project-modal-back" class="btn btn-secondary" aria-label="Retour">
+                    <i data-feather="arrow-left" aria-hidden="true"></i>
+                    <span>Retour</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="js/script.js"></script>
