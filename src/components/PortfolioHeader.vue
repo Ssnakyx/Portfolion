@@ -8,11 +8,11 @@ defineProps({
   },
   hudStatus: {
     type: String,
-    default: "SYNC",
+    default: "DAY",
   },
   hudLevel: {
     type: String,
-    default: "LV.03",
+    default: "Y:64",
   },
 })
 
@@ -38,9 +38,9 @@ const emit = defineEmits(["toggle-menu", "toggle-theme", "scroll-to"])
           <span class="sr-only">Menu</span>
         </button>
         <ul id="nav-links" class="nav-links" :class="{ 'nav-open': isMenuOpen }">
-          <li><button class="nav-link" @click="emit('scroll-to', 'about')">À propos</button></li>
-          <li><button class="nav-link" @click="emit('scroll-to', 'projects')">Projets</button></li>
-          <li><button class="nav-link" @click="emit('scroll-to', 'contact')">Contact</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'about')">Base</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'projects')">Missions</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'contact')">Portail</button></li>
         </ul>
         <div class="header-buttons">
           <div class="micro-hud" aria-live="polite">

@@ -16,8 +16,8 @@ const isMenuOpen = ref(false)
 const currentSlide = ref(0)
 const selectedProject = ref(null)
 const currentTime = ref("00:00:00")
-const hudStatus = ref("SYNC")
-const hudLevel = ref("LV.03")
+const hudStatus = ref("DAY")
+const hudLevel = ref("Y:64")
 const bubbleItems = Array.from({ length: 10 }, (_, index) => index + 1)
 let sliderInterval = null
 let clockInterval = null
@@ -121,14 +121,14 @@ function updateHudClock() {
   const seconds = String(now.getSeconds()).padStart(2, "0")
   currentTime.value = `${hours}:${minutes}:${seconds}`
 
-  if (now.getHours() >= 22 || now.getHours() <= 5) {
-    hudStatus.value = "DARK HOUR"
+  if (now.getHours() >= 20 || now.getHours() <= 5) {
+    hudStatus.value = "NIGHT"
   } else if (now.getHours() >= 6 && now.getHours() <= 11) {
-    hudStatus.value = "MORNING"
+    hudStatus.value = "SUNRISE"
   } else if (now.getHours() >= 12 && now.getHours() <= 17) {
-    hudStatus.value = "ACTIVE"
+    hudStatus.value = "DAY"
   } else {
-    hudStatus.value = "EVENING"
+    hudStatus.value = "SUNSET"
   }
 }
 

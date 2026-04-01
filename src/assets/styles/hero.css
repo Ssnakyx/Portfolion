@@ -1,5 +1,5 @@
 .hero-section {
-  min-height: 92vh;
+  min-height: 89vh;
   display: grid;
   align-items: center;
   overflow: hidden;
@@ -8,72 +8,77 @@
 .hero-background {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 60% 0%, rgba(117, 236, 255, 0.33) 0%, transparent 35%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 34%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(78, 129, 62, 0.08) 0,
+      rgba(78, 129, 62, 0.08) 16px,
+      rgba(54, 95, 43, 0.08) 16px,
+      rgba(54, 95, 43, 0.08) 32px
+    );
   z-index: -1;
 }
 
 .floating-shape {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.35;
-  animation: floatShape 9s ease-in-out infinite alternate;
+  opacity: 0.5;
+  animation: floatShape 5s steps(8, end) infinite;
 }
 
 .shape-1 {
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, rgba(90, 225, 255, 0.6), transparent 70%);
-  top: 12%;
-  left: -4%;
+  width: 180px;
+  height: 62px;
+  background: #f2f7ff;
+  border: 3px solid #d8e0ea;
+  top: 14%;
+  left: -2%;
 }
 
 .shape-2 {
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(34, 121, 255, 0.65), transparent 70%);
-  bottom: -12%;
-  right: -8%;
-  animation-delay: 1.4s;
+  width: 220px;
+  height: 70px;
+  background: #f2f7ff;
+  border: 3px solid #d8e0ea;
+  bottom: 16%;
+  right: -5%;
+  animation-delay: 1.3s;
 }
 
 .hero-layout {
-  width: min(1200px, 100% - 2.5rem);
+  width: min(1180px, 100% - 2rem);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 0.9fr;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1.4rem;
   position: relative;
 }
 
 .hero-left-panel {
-  padding: 1.5rem 1.5rem 1.7rem;
-  border: 1px solid var(--line);
-  background: linear-gradient(145deg, rgba(9, 49, 129, 0.62), rgba(5, 27, 73, 0.42));
+  padding: 1.2rem;
+  border: 4px solid var(--line);
+  background: linear-gradient(180deg, #d6c299, #c8b68f);
   box-shadow: var(--shadow-strong);
-  backdrop-filter: blur(5px);
-  animation: appearUp 0.8s ease both;
+  animation: appearUp 0.45s steps(6, end) both;
 }
 
 .hero-counter {
-  font-size: 1.05rem;
+  font-size: 1.45rem;
   color: var(--ink-2);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  margin-bottom: 0.8rem;
 }
 
 .hero-title {
-  font-size: clamp(3.5rem, 9vw, 7rem);
-  line-height: 0.9;
-  color: #effbff;
-  text-shadow: 0 12px 25px rgba(2, 8, 19, 0.55);
+  font-size: clamp(1.7rem, 4.6vw, 3rem);
+  line-height: 1.3;
+  color: var(--ink-0);
 }
 
 .hero-buttons {
-  margin-top: 1.6rem;
+  margin-top: 1rem;
   display: flex;
-  gap: 0.75rem;
+  gap: 0.7rem;
   flex-wrap: wrap;
 }
 
@@ -81,69 +86,81 @@
   justify-self: end;
   width: min(440px, 100%);
   display: grid;
-  gap: 0.28rem;
-  animation: appearRight 0.9s ease both;
-  animation-delay: 0.1s;
+  gap: 0.45rem;
+  animation: appearRight 0.5s steps(6, end) both;
 }
 
 .hero-menu-item {
-  font-family: "Teko", sans-serif;
-  font-size: clamp(2.2rem, 4.8vw, 3.9rem);
   text-align: left;
-  border: none;
-  background: transparent;
+  border: 3px solid var(--line);
+  background: #d9c79f;
   cursor: pointer;
-  line-height: 0.9;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: rgba(211, 247, 255, 0.82);
-  transform: skewX(-18deg);
-  transition: transform 0.2s ease, color 0.2s ease;
+  line-height: 1;
+  color: var(--ink-0);
+  padding: 0.55rem 0.8rem;
+  transition: transform 0.15s steps(2, end), background 0.15s linear;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.66rem, 1.8vw, 0.8rem);
 }
 
 .hero-menu-item.active {
-  color: #ffffff;
-  text-shadow: -10px 0 0 var(--danger), 0 0 20px rgba(89, 229, 255, 0.6);
+  background: var(--accent);
+  color: #f8fff0;
 }
 
 .hero-menu-item:hover {
-  transform: skewX(-18deg) translateX(10px);
-  color: #ffffff;
+  transform: translateX(5px);
+  background: var(--accent-strong);
 }
 
 .hero-hud {
   position: absolute;
-  top: 0.8rem;
+  top: -0.4rem;
   right: 0;
-  border: 1px solid rgba(239, 251, 255, 0.6);
-  background: rgba(255, 255, 255, 0.87);
-  color: #071730;
-  padding: 0.5rem 0.9rem;
-  min-width: 140px;
+  border: 3px solid var(--line);
+  background: #e4d2aa;
+  color: var(--ink-0);
+  padding: 0.45rem 0.7rem;
+  min-width: 165px;
 }
 
 .hero-hud-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
+  font-size: 1.05rem;
 }
 
 .hero-hud-value {
-  font-family: "Teko", sans-serif;
-  font-size: 1.5rem;
-  line-height: 1;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.64rem;
+  margin-top: 0.35rem;
 }
 
 @keyframes floatShape {
-  from { transform: translateY(0) scale(1); }
-  to { transform: translateY(-24px) scale(1.08); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(24px);
+  }
 }
 
 @keyframes appearUp {
-  from { opacity: 0; transform: translateY(26px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes appearRight {
-  from { opacity: 0; transform: translateX(26px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
