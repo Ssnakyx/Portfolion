@@ -52,7 +52,8 @@
   border: 1px solid var(--line);
   background: linear-gradient(145deg, rgba(9, 49, 129, 0.62), rgba(5, 27, 73, 0.42));
   box-shadow: var(--shadow-strong);
-  backdrop-filter: blur(5px);
+  border-radius: 28px;
+  backdrop-filter: blur(8px);
   animation: appearUp 0.8s ease both;
 }
 
@@ -87,18 +88,19 @@
 }
 
 .hero-menu-item {
-  font-family: "Teko", sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(2.2rem, 4.8vw, 3.9rem);
   text-align: left;
-  border: none;
-  background: transparent;
+  border: 1px solid rgba(186, 237, 255, 0.26);
+  background: rgba(3, 28, 74, 0.42);
+  border-radius: 18px;
   cursor: pointer;
   line-height: 0.9;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: rgba(211, 247, 255, 0.82);
-  transform: skewX(-18deg);
-  transition: transform 0.2s ease, color 0.2s ease;
+  transform: skewX(-8deg);
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
 .hero-menu-item.active {
@@ -107,7 +109,8 @@
 }
 
 .hero-menu-item:hover {
-  transform: skewX(-18deg) translateX(10px);
+  transform: skewX(-8deg) translateX(10px);
+  background: rgba(27, 90, 185, 0.55);
   color: #ffffff;
 }
 
@@ -120,6 +123,7 @@
   color: #071730;
   padding: 0.5rem 0.9rem;
   min-width: 140px;
+  border-radius: 14px;
 }
 
 .hero-hud-label {

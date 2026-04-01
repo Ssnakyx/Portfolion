@@ -65,15 +65,11 @@
     flex-direction: column;
   }
 
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .micro-hud {
     display: none;
   }
 
+  .wave-layer,
   .bubble-layer {
     display: none;
   }

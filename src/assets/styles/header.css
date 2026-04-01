@@ -4,7 +4,7 @@
   z-index: 40;
   padding: 0.8rem 0;
   border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   background: linear-gradient(120deg, rgba(0, 33, 95, 0.75), rgba(7, 55, 140, 0.3));
 }
 
@@ -40,7 +40,8 @@ nav {
   color: var(--ink-1);
   padding: 0.45rem 0.95rem;
   min-width: 84px;
-  transform: skewX(-16deg);
+  transform: skewX(-10deg);
+  border-radius: 999px;
   cursor: pointer;
   transition: 0.24s ease;
   font-size: 1.1rem;
@@ -70,6 +71,7 @@ nav {
   color: var(--ink-0);
   padding: 0.35rem 0.55rem;
   letter-spacing: 0.05em;
+  border-radius: 999px;
 }
 
 .hud-dot {
@@ -105,7 +107,7 @@ nav {
   border: 1px solid var(--line);
   background: rgba(10, 53, 129, 0.65);
   color: var(--ink-0);
-  border-radius: 0.3rem;
+  border-radius: 999px;
   cursor: pointer;
 }
 

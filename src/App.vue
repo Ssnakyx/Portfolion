@@ -7,7 +7,6 @@ import AboutSection from "./components/AboutSection.vue"
 import ProjectsSlider from "./components/ProjectsSlider.vue"
 import ProjectsGrid from "./components/ProjectsGrid.vue"
 import ContactSection from "./components/ContactSection.vue"
-import SiteFooter from "./components/SiteFooter.vue"
 import ProjectModal from "./components/ProjectModal.vue"
 import { projects, skills, tools } from "./data/content"
 
@@ -18,13 +17,11 @@ const selectedProject = ref(null)
 const currentTime = ref("00:00:00")
 const hudStatus = ref("SYNC")
 const hudLevel = ref("LV.03")
-const bubbleItems = Array.from({ length: 10 }, (_, index) => index + 1)
+const bubbleItems = Array.from({ length: 12 }, (_, index) => index + 1)
 let sliderInterval = null
 let clockInterval = null
-let rafId = null
 
 const featuredProjects = computed(() => projects.slice(0, 5))
-const currentYear = computed(() => new Date().getFullYear())
 const themeClass = computed(() => (isDarkMode.value ? "dark-mode" : "light-mode"))
 
 function getColorValue(color) {
@@ -45,13 +42,27 @@ function replaceIcons() {
   feather.replace()
 }
 
+function purgeLegacyFooter() {
+  document.querySelectorAll("footer, .footer").forEach((node) => node.remove())
+}
+
 function scrollToSection(id) {
   const element = document.getElementById(id)
   const header = document.querySelector(".sticky-header")
   if (!element || !header) return
+
+  element.classList.remove("section-jump")
+  void element.offsetWidth
+  element.classList.add("section-jump")
+
   const headerHeight = header.offsetHeight
   const top = element.getBoundingClientRect().top + window.scrollY - headerHeight
   window.scrollTo({ top, behavior: "smooth" })
+
+  window.setTimeout(() => {
+    element.classList.remove("section-jump")
+  }, 800)
+
   isMenuOpen.value = false
 }
 
@@ -132,15 +143,6 @@ function updateHudClock() {
   }
 }
 
-function handlePointerMove(event) {
-  if (rafId) return
-  rafId = requestAnimationFrame(() => {
-    document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`)
-    document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`)
-    rafId = null
-  })
-}
-
 function onKeydown(event) {
   if (event.key === "Escape" && selectedProject.value) {
     closeProjectModal()
@@ -165,23 +167,22 @@ onMounted(async () => {
   }
 
   await nextTick()
+  purgeLegacyFooter()
   replaceIcons()
   setupScrollAnimations()
   startSlider()
   updateHudClock()
   clockInterval = setInterval(updateHudClock, 1000)
   document.addEventListener("keydown", onKeydown)
-  window.addEventListener("pointermove", handlePointerMove)
+
+  // Safety pass in case a stale footer node is injected after mount.
+  window.setTimeout(purgeLegacyFooter, 200)
 })
 
 onBeforeUnmount(() => {
   stopSlider()
   clearInterval(clockInterval)
   document.removeEventListener("keydown", onKeydown)
-  window.removeEventListener("pointermove", handlePointerMove)
-  if (rafId) {
-    cancelAnimationFrame(rafId)
-  }
   document.body.classList.remove("no-scroll")
 })
 </script>
@@ -189,6 +190,8 @@ onBeforeUnmount(() => {
 <template>
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
   <div class="site-wrapper" :class="themeClass">
+    <div class="wave-layer wave-layer-a" aria-hidden="true"></div>
+    <div class="wave-layer wave-layer-b" aria-hidden="true"></div>
     <div class="bubble-layer" aria-hidden="true">
       <span v-for="item in bubbleItems" :key="item" class="bubble" :style="{ '--i': item }"></span>
     </div>
@@ -221,7 +224,6 @@ onBeforeUnmount(() => {
 
     <ProjectsGrid :projects="projects" :get-color-value="getColorValue" @open-project="openProjectModal" />
     <ContactSection />
-    <SiteFooter :current-year="currentYear" />
   </div>
 
   <ProjectModal :selected-project="selectedProject" @close="closeProjectModal" />
