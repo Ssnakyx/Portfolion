@@ -1,0 +1,133 @@
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  background: linear-gradient(120deg, rgba(0, 33, 95, 0.75), rgba(7, 55, 140, 0.3));
+}
+
+.sticky-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.logo {
+  font-size: 2.1rem;
+  color: var(--ink-0);
+  letter-spacing: 0.05em;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-link {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink-1);
+  padding: 0.45rem 0.95rem;
+  min-width: 84px;
+  transform: skewX(-16deg);
+  cursor: pointer;
+  transition: 0.24s ease;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nav-link:hover {
+  color: #031b36;
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 0 24px rgba(77, 225, 255, 0.65);
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.micro-hud {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid var(--line);
+  background: rgba(3, 21, 60, 0.72);
+  color: var(--ink-0);
+  padding: 0.35rem 0.55rem;
+  letter-spacing: 0.05em;
+}
+
+.hud-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  box-shadow: 0 0 10px rgba(137, 252, 255, 0.9);
+  animation: hudPulse 1.2s ease-in-out infinite;
+}
+
+.hud-time,
+.hud-status,
+.hud-level {
+  font-size: 0.96rem;
+}
+
+.hud-status {
+  color: var(--accent-strong);
+}
+
+@keyframes hudPulse {
+  0% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.5; transform: scale(0.9); }
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: rgba(10, 53, 129, 0.65);
+  color: var(--ink-0);
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.icon-sun,
+.dark-mode .icon-moon {
+  display: none;
+}
+
+.dark-mode .icon-sun {
+  display: block;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+}
+
+.menu-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 4px 0;
+  background: var(--ink-0);
+}

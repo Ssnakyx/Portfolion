@@ -1,0 +1,85 @@
+@media (max-width: 1080px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+  }
+
+  .hero-menu-stack {
+    justify-self: start;
+  }
+
+  .hero-hud {
+    position: static;
+    width: fit-content;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 64px 1rem auto 1rem;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(2, 13, 38, 0.95);
+    border: 1px solid var(--line);
+    padding: 0.7rem;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .section {
+    padding: 3.8rem 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2.7rem, 16vw, 4.4rem);
+  }
+
+  .hero-menu-item {
+    font-size: clamp(1.9rem, 10vw, 2.8rem);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-footer,
+  .project-modal-footer,
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .micro-hud {
+    display: none;
+  }
+
+  .bubble-layer {
+    display: none;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+}
