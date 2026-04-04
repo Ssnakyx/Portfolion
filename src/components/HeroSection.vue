@@ -3,37 +3,45 @@ const emit = defineEmits(["scroll-to"])
 </script>
 
 <template>
-  <section id="main-content" class="hero-section" role="region" aria-label="Bannière d'accueil">
-    <div class="hero-background" aria-hidden="true" />
-    <div class="floating-shape shape-1" aria-hidden="true" />
-    <div class="floating-shape shape-2" aria-hidden="true" />
-    <div class="hero-content hero-layout">
-      <div class="hero-left-panel">
-        <p class="hero-counter">Seed #2025 // Survival Portfolio</p>
-        <h1 class="hero-title"><span>Hamed Kaffa</span></h1>
-        <div class="hero-buttons">
-          <button class="btn btn-primary" @click="emit('scroll-to', 'projects')">
-            <span>Explorer le monde</span>
-            <i data-feather="arrow-right" aria-hidden="true" />
-          </button>
-          <button class="btn btn-outline" @click="emit('scroll-to', 'contact')">
-            <span>Rejoindre le serveur</span>
-          </button>
+  <section id="main-content" class="hero-section" role="region" aria-label="Hero">
+    <div class="hero-glow" aria-hidden="true" />
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-intro">
+          Je conçois des sites web rapides et modernes qui aident les entreprises à se développer, disponible pour des projets freelance.
+        </p>
+        <h2 class="hero-title">
+          HAMED<br />
+          <span class="accent">KAFFA</span>
+        </h2>
+        <button class="hero-cta" @click="emit('scroll-to', 'contact')">
+          CONTACT
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <div class="hero-image-placeholder">HK</div>
         </div>
-      </div>
-
-      <div class="hero-menu-stack" role="navigation" aria-label="Menu rapide">
-        <button class="hero-menu-item active" @click="emit('scroll-to', 'about')">Inventaire</button>
-        <button class="hero-menu-item" @click="emit('scroll-to', 'projects')">Crafts</button>
-        <button class="hero-menu-item" @click="emit('scroll-to', 'projects')">Quetes</button>
-        <button class="hero-menu-item" @click="emit('scroll-to', 'projects')">Biomes</button>
-        <button class="hero-menu-item" @click="emit('scroll-to', 'contact')">Allies</button>
-      </div>
-
-      <div class="hero-hud" aria-hidden="true">
-        <p class="hero-hud-label">Mode de jeu</p>
-        <p class="hero-hud-value">SURVIE</p>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          DISPONIBLE &mdash; AVR&rsquo;26
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">DEVELOPER</span>
+      <span class="marquee-item">DESIGNER</span>
+      <span class="marquee-item">CREATOR</span>
+      <span class="marquee-item">DEVELOPER</span>
+      <span class="marquee-item">DESIGNER</span>
+      <span class="marquee-item">CREATOR</span>
+      <span class="marquee-item">DEVELOPER</span>
+      <span class="marquee-item">DESIGNER</span>
+      <span class="marquee-item">CREATOR</span>
+    </div>
+  </div>
 </template>

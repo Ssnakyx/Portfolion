@@ -1,52 +1,41 @@
 <script setup>
 defineProps({
-  skills: {
-    type: Array,
-    required: true,
-  },
-  tools: {
-    type: Array,
-    required: true,
-  },
+  skillCategories: { type: Array, required: true },
 })
 </script>
 
 <template>
-  <section id="about" class="section bg-light" role="region" aria-labelledby="about-title">
+  <section id="about" class="section" role="region" aria-labelledby="about-title">
     <div class="container">
-      <h2 id="about-title" class="section-title gradient-text">À propos de moi</h2>
-      <div class="about-grid">
-        <div class="about-content">
-          <h3 class="subsection-title">Mon parcours</h3>
-          <p class="text-paragraph">
-            Je suis un étudiant en informatique passionné par la création de solutions innovantes. Mon parcours en programmation a
-            commencé par une curiosité sur le fonctionnement des jeux et des applications, et j'ai continué à développer mes
-            compétences depuis.
+      <div class="section-header">
+        <h2 id="about-title" class="spaced-title">A B O U T &nbsp; /</h2>
+        <span class="section-label">(A PROPOS)</span>
+      </div>
+      <div class="about-layout">
+        <div class="about-text fade-up">
+          <p class="about-label">( A propos de moi )</p>
+          <p class="about-paragraph">
+            Je suis un développeur full-stack passionné par la création d'expériences digitales modernes et performantes.
+            Je travaille principalement avec Vue.js et des technologies web modernes pour transformer des idées en produits
+            fiables et agréables à utiliser.
           </p>
-          <p class="text-paragraph">
-            J'aime travailler avec diverses technologies et j'apprends constamment de nouveaux outils et frameworks pour améliorer
-            mes compétences en développement. Je m'intéresse particulièrement au développement de jeux, aux applications web et aux
-            technologies serveur.
+          <p class="about-paragraph">
+            Je construis des sites depuis assez longtemps pour avoir des opinions tranchées sur des choses qui n'importent pas
+            à la plupart des gens — comme si une transition doit durer 150ms ou 200ms. (C'est 150ms, évidemment).
           </p>
-          <a href="assets/Hamed_Kaffa.pdf" class="btn btn-primary mt-8" download>
-            <span>Télécharger mon CV</span>
-          </a>
-        </div>
-        <div class="skills-section">
-          <h3 class="subsection-title">Mes compétences</h3>
-          <div class="skills-list">
-            <div v-for="skill in skills" :key="skill.name" class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">{{ skill.name }}</span>
-                <span class="skill-percentage" aria-hidden="true">{{ skill.value }}%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" :class="skill.className" :style="{ width: `${skill.value}%` }" />
-              </div>
-            </div>
+          <div class="about-cta">
+            <a href="assets/Hamed_Kaffa.pdf" class="btn" download>
+              Télécharger mon CV
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
           </div>
-          <div class="tools-grid">
-            <div v-for="tool in tools" :key="tool" class="tool-item">{{ tool }}</div>
+        </div>
+        <div class="skills-section fade-up">
+          <div v-for="cat in skillCategories" :key="cat.title" class="skill-category">
+            <h4>{{ cat.title }}</h4>
+            <div class="skill-tags">
+              <span v-for="item in cat.items" :key="item" class="skill-tag">{{ item }}</span>
+            </div>
           </div>
         </div>
       </div>

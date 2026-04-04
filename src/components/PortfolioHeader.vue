@@ -1,33 +1,21 @@
 <script setup>
 defineProps({
   isMenuOpen: Boolean,
-  isDarkMode: Boolean,
-  currentTime: {
-    type: String,
-    default: "--:--:--",
-  },
-  hudStatus: {
-    type: String,
-    default: "DAY",
-  },
-  hudLevel: {
-    type: String,
-    default: "Y:64",
-  },
+  isScrolled: Boolean,
+  currentTime: { type: String, default: "--:--:--" },
 })
-
-const emit = defineEmits(["toggle-menu", "toggle-theme", "scroll-to"])
+const emit = defineEmits(["toggle-menu", "scroll-to"])
 </script>
 
 <template>
-  <header class="sticky-header" role="banner">
+  <header class="sticky-header" :class="{ scrolled: isScrolled }" role="banner">
     <div class="container">
       <h1 class="logo">Hamed Kaffa</h1>
       <nav role="navigation" aria-label="Menu principal">
         <button
           class="mobile-menu-toggle"
           :class="{ 'menu-open': isMenuOpen }"
-          aria-label="Ouvrir le menu mobile"
+          aria-label="Menu"
           :aria-expanded="String(isMenuOpen)"
           aria-controls="nav-links"
           @click="emit('toggle-menu')"
@@ -35,24 +23,18 @@ const emit = defineEmits(["toggle-menu", "toggle-theme", "scroll-to"])
           <span class="menu-bar" />
           <span class="menu-bar" />
           <span class="menu-bar" />
-          <span class="sr-only">Menu</span>
         </button>
         <ul id="nav-links" class="nav-links" :class="{ 'nav-open': isMenuOpen }">
-          <li><button class="nav-link" @click="emit('scroll-to', 'about')">Base</button></li>
-          <li><button class="nav-link" @click="emit('scroll-to', 'projects')">Missions</button></li>
-          <li><button class="nav-link" @click="emit('scroll-to', 'contact')">Portail</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'services')">Services</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'projects')">Projets</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'about')">About</button></li>
+          <li><button class="nav-link" @click="emit('scroll-to', 'contact')">Contact</button></li>
         </ul>
-        <div class="header-buttons">
-          <div class="micro-hud" aria-live="polite">
-            <span class="hud-dot" aria-hidden="true"></span>
-            <span class="hud-time">{{ currentTime }}</span>
-            <span class="hud-status">{{ hudStatus }}</span>
-            <span class="hud-level">{{ hudLevel }}</span>
+        <div class="header-actions">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>DISPONIBLE</span>
           </div>
-          <button class="theme-toggle" aria-label="Changer de thème" @click="emit('toggle-theme')">
-            <i data-feather="moon" class="icon-moon" aria-hidden="true" />
-            <i data-feather="sun" class="icon-sun" aria-hidden="true" />
-          </button>
         </div>
       </nav>
     </div>
